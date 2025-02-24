@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falafel Order Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .inventory { display: flex; gap: 10px; margin: 10px 0; }
+        .order { margin: 10px 0; }
+        #scoreboard, #gameOver { display: none; }
+    </style>
+</head>
+<body>
+    <h1>Falafel Order Game</h1>
+    <div id="explanation">
+        <p>Make falafel orders by dragging ingredients from your inventory. Complete orders to earn points!</p>
+    </div>
+    
+    <div id="userInput" id="username">
+        <input type="text" id="username" placeholder="Enter your username" required>
+        <button id="startGame">Start Game</button>
+    </div>
+
+    <div id="game" style="display:none;">
+        <div id="score">Score: 0</div>
+        <div id="timer">Time Left: 120</div>
+        
+        <div class="order" id="currentOrder"></div>
+        <div class="inventory" id="inventory"></div>
+        <div id="gameOver"></div>
+    </div>
+
+    <div id="scoreboard">
+        <h2>Scoreboard</h2>
+        <div id="scoresList"></div>
+        <button id="newGameSameUser">Play Again</button>
+        <button id="newGameDifferentUser">New User</button>
+    </div>
+
+    <script src="dist/game.js">
+
+    </script>
+</body>
+</html>
+
