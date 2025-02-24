@@ -9,7 +9,7 @@ let users: { [key: string]: number } = {};
 let currentScore: number = 0;
 let currentUser: string | null = null;
 let gameInterval: any;
-let timer: number = 10;
+let timer: number = 5;
 
 // Sample order generation
 function generateOrder(): Order {
@@ -49,7 +49,9 @@ function startGame() {
 function updateInventory() {
     const inventory = document.getElementById("inventory")!;
     inventory.innerHTML = `
-        <div id="falafel">Falafel: 3</div>
+        <div id="falafel"> <img src="FalafeIcon.png">
+        </br> 3 </br> Falafel
+        </div>
         <div id="tomato">Tomato: 3</div>
         <div id="lettuce">Lettuce: 3</div>
         <div id="onion">Onion: 3</div>`;
@@ -64,7 +66,7 @@ function loadNewOrder() {
 
 // Start timer
 function startTimer() {
-    timer = 10;
+    timer = 5;
     const timerDiv = document.getElementById("timer")!;
     gameInterval = setInterval(() => {
         timer--;
@@ -89,4 +91,10 @@ function endGame() {
 
 // Event listeners
 document.getElementById("startGame")!.addEventListener("click", startGame);
-document.getElementById("newGameDifferentUser")!.addEventListener("click", (userInput:HTMLDivElement));
+
+const button: HTMLButtonElement = document.getElementById('newGameDifferentUser') as HTMLButtonElement;
+
+    button.onclick = (): void => {
+        window.location.reload();
+    };
+
