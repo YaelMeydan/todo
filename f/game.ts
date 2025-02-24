@@ -89,4 +89,4 @@ function endGame() {
 
 // Event listeners
 document.getElementById("startGame")!.addEventListener("click", startGame);
-document.getElementById("newGameDifferentUser")!.addEventListener("click", startGame);
+document.getElementById("newGameDifferentUser")!.addEventListener("click", (userInput:HTMLDivElement));

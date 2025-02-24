@@ -4,7 +4,7 @@ var users = {};
 var currentScore = 0;
 var currentUser = null;
 var gameInterval;
-var timer = 120; // Sample order generation
+var timer = 10; // Sample order generation
 
 function generateOrder() {
   return {
@@ -19,7 +19,7 @@ function generateOrder() {
 function startGame() {
   if (currentUser) return; // Already in game
 
-  var usernameInput = document.getElementById("userInput");
+  var usernameInput = document.getElementById("username");
   var username = usernameInput.value;
 
   if (users[username] !== undefined) {
@@ -32,9 +32,8 @@ function startGame() {
   } // Hide input and show game
 
 
-  document.getElementById("hideWhenGameStart").style.display = "none";
+  document.getElementById("userInput").style.display = "none";
   document.getElementById("game").style.display = "block";
-  document.getElementById("userInputshow").style.display = "block";
   updateInventory();
   loadNewOrder();
   startTimer();
@@ -55,7 +54,7 @@ function loadNewOrder() {
 
 
 function startTimer() {
-  timer = 120;
+  timer = 10;
   var timerDiv = document.getElementById("timer");
   gameInterval = setInterval(function () {
     timer--;
@@ -70,11 +69,14 @@ function startTimer() {
 
 
 function endGame() {
-  document.getElementById("hideWhenGameStart").style.display = "none";
   document.getElementById("score").innerHTML = "Final Score: ".concat(currentScore);
   document.getElementById("game").style.display = "none";
   document.getElementById("scoreboard").style.display = "block";
-  document.getElementById("newGameDifferentUser").addEventListener("click", startGame);
-}
+} // Event listeners
 
-document.getElementById("startGame").addEventListener("click", startGame); // Event listeners
+
+document.getElementById("startGame").addEventListener("click", startGame);
+document.getElementById("newGameDifferentUser").addEventListener("click", function (e) {
+  e.preventDefault();
+  return startGame();
+});
